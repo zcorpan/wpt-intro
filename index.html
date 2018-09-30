@@ -7,17 +7,18 @@
     @font-face { font-family: Oswald; src: url(oswald-regular.woff2) format('woff2'); font-weight:400; font-style:normal; }
     html { font-family: serif; }
     p, ul, ol { font-size: 2rem; }
-    h1 { background-color:#FDD741; color: black; padding: 0.5em 1em; font-family: Oswald, sans-serif; text-transform: uppercase; font-weight: 400; }
+    h1 { margin: 0; background-color:#FDD741; color: black; padding: 0.5em 1em; font-family: Oswald, sans-serif; text-transform: uppercase; font-weight: 400; }
     .first h1 { margin-top: 20%; }
     .first { text-align: center; }
     a { color: inherit; }
     img { max-width: 80%; display: block; margin: 0 auto; }
-    blockquote { padding: 0 10%; color: gray; }
+    img[src="reftest.png"] { max-width: 50%; display: inline; }
+    blockquote { padding: 0 0 0 10%; color: gray; }
     blockquote::before { content: "“"; float: left; font-size: 6em; margin: -0.2em 0 0 -0.7em; }
     </style>
   </head>
   <body>
-    <textarea id="source">
+    <xmp id="source">
 
 class: first
 
@@ -40,7 +41,7 @@ Simon Pieters
 
   * Clone the repo
   * Set up hosts file
-  * Install virtualenv (missing from docs)
+  * Install `virtualenv` (missing from docs)
     - https://github.com/web-platform-tests/wpt/issues/6565
   * Run tests
 
@@ -189,6 +190,8 @@ test(() => {
 ...
 ```
 
+<img alt="Test with a green box. " src=reftest.png><img alt="Reference with a green box." src=reftest.png>
+
 ---
 
 # wptserve
@@ -196,6 +199,7 @@ test(() => {
   * HTTP headers
   * Substitution
   * Pipes
+  * Stash
   * .asis
   * Python handlers
   * WebSocket
@@ -225,6 +229,7 @@ const otherOrigin = "http://{{domains[www1]}}:{{ports[http][0]}}";
 # Review on GitHub
 
   * https://github.com/web-platform-tests/wpt#test-review
+  * https://web-platform-tests.org/reviewing-tests/
 
 ---
 
@@ -232,9 +237,7 @@ const otherOrigin = "http://{{domains[www1]}}:{{ports[http][0]}}";
 
   * https://github.com/web-platform-tests/results-collection
 
-<blockquote>
-  This project defines the procedure used to provision and deploy systems for running the test results collection mechanism for <a href="https://github.com/w3c/wptdashboard">the WPT Dashboard project</a>.
-</blockquote>
+> This project defines a procedure to provision and deploy systems for running [the web-platform-tests](https://github.com/web-platform-tests/wpt) in a number of configurations. It currently provides data to power [wpt.fyi](https://wpt.fyi/), a dashboard for reviewing current and historic test results.
 
 ---
 
@@ -275,7 +278,14 @@ const otherOrigin = "http://{{domains[www1]}}:{{ports[http][0]}}";
 
 <img alt="Two thirds of the responders were browser developers." src=survey.png>
 
-    </textarea>
+---
+
+# Happy hacking
+
+```bash
+git clone git@github.com:web-platform-tests/wpt.git
+```
+    </xmp>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
     <script>
